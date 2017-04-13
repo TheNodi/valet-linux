@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'composer install'
+        sh 'composer install --no-interaction'
       }
     }
     stage('Test') {
