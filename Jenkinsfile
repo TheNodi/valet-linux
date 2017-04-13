@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'thenodi/docker-ubuntu1604-valet'
-    }
-    
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
