@@ -3,16 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''cd /workspace
-composer install
-'''
+        sh 'composer install'
       }
     }
     stage('Test') {
       steps {
-        sh '''cd /workspace
-./vendor/bin/phpunit
-'''
+        sh './vendor/bin/phpunit'
       }
     }
   }
