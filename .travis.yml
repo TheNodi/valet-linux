@@ -45,6 +45,10 @@ script:
       );
     fi
 
+  # Change container DNS servers
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID echo 'nameserver 8.8.8.8' > /etc/resolv.conf; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID echo 'nameserver 8.8.4.4' >> /etc/resolv.conf; fi
+
   # Prepare the container
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID /prepare.sh; fi
 
