@@ -52,6 +52,8 @@ script:
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID cat /etc/resolv.conf; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ping -c 4 8.8.8.8; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ping -c 4 8.8.4.4; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID nslookup google.com; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID nslookup mirrors.kernel.org; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ping -c 4 google.com; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ping -c 4 mirrors.kernel.org; fi
 
