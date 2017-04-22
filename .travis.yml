@@ -49,7 +49,7 @@ script:
       );
     fi
 
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ifconfig; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ip addr; fi
 
   # Prepare the container
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -Sy --debug; fi
