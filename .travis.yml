@@ -50,7 +50,7 @@ script:
     fi
 
   # Debug
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -S dnsutils; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -S --noconfirm dnsutils; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID dig google.com; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID dig mirrors.kernel.org; fi
 
