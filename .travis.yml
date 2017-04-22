@@ -40,6 +40,7 @@ script:
           docker run --detach \
               --volume="${PWD}":/workspace \
               -e "REPOSITORY=/workspace" \
+              --network="host" \
               --dns=8.8.8.8 \
               --dns=8.8.4.4 \
               --dns-opt='options single-request' \
@@ -48,10 +49,6 @@ script:
               thenodi/docker-${distro}-valet:latest
       );
     fi
-
-  # Debug
-  - dig google.com
-  - dig mirrors.kernel.org
 
   # Prepare the container
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -Sy --debug; fi
