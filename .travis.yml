@@ -40,8 +40,6 @@ script:
           docker run --detach \
               --volume="${PWD}":/workspace \
               -e "REPOSITORY=/workspace" \
-              --dns=8.8.8.8 \
-              --dns=8.8.4.4 \
               --sysctl net.ipv6.conf.all.disable_ipv6=1 \
               ${run_opts} \
               thenodi/docker-${distro}-valet:latest
@@ -49,8 +47,6 @@ script:
     fi
 
   - cat /etc/resolv.conf
-
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID systemctl restart NetworkManager.service; fi
 
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ip addr; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID cat /etc/resolv.conf; fi
