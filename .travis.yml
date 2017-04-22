@@ -50,8 +50,8 @@ script:
     fi
 
   # Debug
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID dig google.com; fi
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID dig mirrors.kernel.org; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID drill google.com; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID drill mirrors.kernel.org; fi
 
   # Prepare the container
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -Sy --debug; fi
