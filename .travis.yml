@@ -48,6 +48,8 @@ script:
       );
     fi
 
+  - cat /etc/resolv.conf
+
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID systemctl restart NetworkManager.service; fi
 
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ip addr; fi
