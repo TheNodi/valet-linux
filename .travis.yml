@@ -46,11 +46,11 @@ script:
     fi
 
   # Change container DNS servers
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'; fi
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID bash -c 'echo "nameserver 8.8.4.4" >> /etc/resolv.conf'; fi
+  #- if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'; fi
+  #- if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID bash -c 'echo "nameserver 8.8.4.4" >> /etc/resolv.conf'; fi
 
   # Prepare the container
-  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID /prepare.sh; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID sudo pacman -Sy --debug; fi
 
   # Run functional tests
   - if [[ -n $distro ]]; then docker exec -it -u valet $CONTAINER_ID /workspace/tests/Functional/run.sh; fi
