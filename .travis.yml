@@ -50,6 +50,7 @@ script:
     fi
 
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID ip addr; fi
+  - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID cat /etc/resolv.conf; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID curl https://google.com; fi
   - if [[ -n $distro ]]; then docker exec -it $CONTAINER_ID curl http://mirrors.kernel.org/; fi
 
